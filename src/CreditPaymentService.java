@@ -1,7 +1,6 @@
 public class CreditPaymentService {
-    public long calculate(int amount) {
-        double percent = 9.9 / 12;
-        double payment = amount / 12 * percent;
-        return (long) payment;
+    public long calculate(int amount, double fix1) {
+        int payment = (int) (amount * fix1);
+        return payment;
     }
 }
