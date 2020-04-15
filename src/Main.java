@@ -1,11 +1,18 @@
 public class Main {
     public static void main(String[] args) {
         CreditPaymentService service = new CreditPaymentService();
+        double result;
+        double payment;
         int amount = 1_000_000;
         double percent = 9.99 / 100 / 12;
-        double fix = (1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent)*(1 + percent);
-        double fix1 = percent + (percent / (fix - 1));
-        long payment = service.calculate(amount, (int) fix1);
+        result = Math.pow(1 + percent, 12);
+        payment = service.calculate(percent, result, amount);
+        System.out.println(payment);
+        result = Math.pow(1 + percent, 24);
+        payment = service.calculate(percent, result, amount);
+        System.out.println(payment);
+        result = Math.pow(1 + percent, 36);
+        payment = service.calculate(percent, result, amount);
         System.out.println(payment);
     }
 }
